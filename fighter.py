@@ -43,7 +43,7 @@ class Fighter():
 
                 # Attack
                 if key[pygame.K_r] or key[pygame.K_t]:
-                    self.attack(surface, target)
+                    self.attack(target)
                     # Determine which attack type was used
                     if key[pygame.K_r]:
                         self.attack_type = 1
@@ -65,7 +65,7 @@ class Fighter():
 
                 # Attack
                 if key[pygame.K_KP1] or key[pygame.K_KP2]:
-                    self.attack(surface, target)
+                    self.attack(target)
                     # Determine which attack type was used
                     if key[pygame.K_KP1]:
                         self.attack_type = 1
@@ -100,7 +100,7 @@ class Fighter():
         if self.health <= 0:
             self.health = 0
             self.alive = False
-            print("Fighter Dead")
+            # print("Fighter Dead")
         if self.attacking:
             self.attack_timer += 1
             if self.attack_timer >= self.attack_duration:
@@ -108,15 +108,12 @@ class Fighter():
                 self.attack_timer = 0
         
 
-    def attack(self, surface, target):
+    def attack(self, target):
         self.attacking = True
         attacking_rect = pygame.Rect(self.rect.centerx - (1.25 * self.rect.width * self.flip), self.rect.y, 1.25 * self.rect.width, self.rect.height)
         if attacking_rect.colliderect(target.rect):
             target.health -= 10
 
-        pygame.draw.rect(surface, (0, 255, 0), attacking_rect)
-
     def draw(self, surface):
         img = pygame.transform.flip(self.image, self.flip, False)
-        pygame.draw.rect(surface, (255, 0, 0), self.rect)
         surface.blit(img, (self.rect.x, self.rect.y))
