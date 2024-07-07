@@ -19,8 +19,22 @@ RED = (255,0,0)
 YELLOW = (255,255,0)
 WHITE= (255, 255, 255)
 
+#define fighter variables
+NUGGIE01_SIZE = 162
+NUGGIE01_DATA = [NUGGIE01_SIZE]
+NUGGIE02_SIZE = 162
+NUGGIE02_DATA = [NUGGIE02_SIZE]
+
 #load background image
 bg_image = pygame.image.load("assets/background01.jpeg").convert_alpha()
+
+#load spritesheets
+nuggie01_sheet = pygame.image.load("assets/fighter01.webp").convert_alpha()
+nuggie02_sheet = pygame.image.load("assets/fighter02.webp").convert_alpha()
+
+#define number of steps in each animation
+NUGGIE01_ANIMATION_STEPS = [1]
+NUGGIE02_ANIMATION_STEPS = [1]
 
 #function for drawing background
 def draw_bg():
@@ -29,11 +43,13 @@ def draw_bg():
 
 def draw_health_bar(health, x, y):
     ratio = health / 100
+    pygame.draw.rect(screen, WHITE, (x - 2, y - 2, 404, 34))
+    pygame.draw.rect(screen, RED, (x, y, 400, 30))
     pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
 
 # create two instances of fighters
-fighter_1 = Fighter(200, 310)
-fighter_2 = Fighter(700, 310)
+fighter_1 = Fighter(200, 310,NUGGIE01_DATA, nuggie01_sheet, NUGGIE01_ANIMATION_STEPS)
+fighter_2 = Fighter(700, 310,NUGGIE02_DATA, nuggie02_sheet, NUGGIE02_ANIMATION_STEPS)
 
 
 #game loop
