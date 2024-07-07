@@ -5,7 +5,7 @@ class Fighter():
         self.size = data[0]
         self.image_scale = data[1]
         self.flip = False
-        self.image = pygame.transform.scale(image, (self.size // self.image_scale, self.size // self.image_scale))
+        self.image = pygame.transform.scale(image, (self.size // self.image_scale, 175))
         self.rect = pygame.Rect((x, y, self.size // self.image_scale, self.size // self.image_scale))
         self.vel_y = 0
         self.jump = False
