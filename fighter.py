@@ -13,7 +13,7 @@ class Fighter():
         self.attack_type = 0
         self.health = 100
         self.attack_timer = 0
-        self.attack_duration = 10  # Adjust this value as needed
+        self.attack_duration = 25  # Adjust this value as needed
 
     def move(self, screen_width, screen_height, surface, target):
         SPEED = 10
@@ -79,7 +79,7 @@ class Fighter():
 
     def attack(self, surface, target):
         self.attacking = True
-        attacking_rect = pygame.Rect(self.rect.centerx - (2 * self.rect.width * self.flip), self.rect.y, 2 * self.rect.width, self.rect.height)
+        attacking_rect = pygame.Rect(self.rect.centerx - (1.25 * self.rect.width * self.flip), self.rect.y, 1.25 * self.rect.width, self.rect.height)
         if attacking_rect.colliderect(target.rect):
             target.health -= 10
 
