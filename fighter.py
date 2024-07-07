@@ -3,8 +3,12 @@ import pygame
 class Fighter():
     def __init__(self, x, y, data, sprite_sheet, animation_steps):
         self.size = data[0]
+        self.image_scale = data[1]
         self.flip = False
         self.animation_list = self.load_images(sprite_sheet, animation_steps)
+        self.action = 0
+        self.frame_index = 0
+        self.image = self.animation_list[self.action][self.frame_index]
         self.rect = pygame.Rect((x, y, 80, 180))
         self.vel_y = 0
         self.jump = False
@@ -13,17 +17,34 @@ class Fighter():
         self.health = 100
 
 
+    # def load_images(self, sprite_sheet, animation_steps):
+    #     #extract images from spritesheet
+    #     animation_list = []
+    #     for y, animation in enumerate(animation_steps):
+    #         temp_img_list = []
+    #         for x in range(animation):
+    #             temp_img = sprite_sheet.subsurface(x * self.size, y * self.size, self.size, self.size)
+    #             pygame.transform.scale(temp_img, (self.size * self.image_scale, self.size * self.image_scale))
+    #             scaled_img = pygame.transform.scale(temp_img, (self.size // self.image_scale, self.size // self.image_scale))
+    #             temp_img_list.append(temp_img)
+    #         animation_list.append(temp_img_list)
+    #     return animation_list
+
     def load_images(self, sprite_sheet, animation_steps):
-        #extract images from spritesheet
+    # Extract images from spritesheet
         animation_list = []
+        scaled_size = self.size // self.image_scale  # Calculate scaled size
+
         for y, animation in enumerate(animation_steps):
             temp_img_list = []
             for x in range(animation):
                 temp_img = sprite_sheet.subsurface(x * self.size, y * self.size, self.size, self.size)
-                temp_img_list.append(temp_img)
+                # Scale the image down
+                scaled_img = pygame.transform.scale(temp_img, (scaled_size, scaled_size))
+                temp_img_list.append(scaled_img)
             animation_list.append(temp_img_list)
-        print(animation_list)
         return animation_list
+
     
 
     def move(self, screen_width, screen_height, surface, target):
@@ -93,4 +114,5 @@ class Fighter():
 
     def draw(self, surface):
         pygame.draw.rect(surface, (255, 0, 0), self.rect)
+        surface.blit(self.image, (self.rect.x, self.rect.y))
 

@@ -21,9 +21,11 @@ WHITE= (255, 255, 255)
 
 #define fighter variables
 NUGGIE01_SIZE = 162
-NUGGIE01_DATA = [NUGGIE01_SIZE]
+NUGGIE01_SCALE = 2
+NUGGIE01_DATA = [NUGGIE01_SIZE, NUGGIE01_SCALE]
 NUGGIE02_SIZE = 162
-NUGGIE02_DATA = [NUGGIE02_SIZE]
+NUGGIE02_SCALE = 4
+NUGGIE02_DATA = [NUGGIE02_SIZE, NUGGIE02_SCALE]
 
 #load background image
 bg_image = pygame.image.load("assets/background01.jpeg").convert_alpha()
