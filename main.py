@@ -50,8 +50,8 @@ def draw_health_bar(health, x, y):
     pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
 
 # create two instances of fighters
-fighter_1 = Fighter(200, 310, False, NUGGIE01_DATA, nuggie01_image, NUGGIE01_ANIMATION_STEPS)
-fighter_2 = Fighter(700, 350, True, NUGGIE02_DATA, nuggie02_image, NUGGIE02_ANIMATION_STEPS)
+fighter_1 = Fighter(1, 200, 310, False, NUGGIE01_DATA, nuggie01_image, NUGGIE01_ANIMATION_STEPS)
+fighter_2 = Fighter(2, 700, 350, True, NUGGIE02_DATA, nuggie02_image, NUGGIE02_ANIMATION_STEPS)
 
 
 #game loop
@@ -69,6 +69,7 @@ while run:
 
     #move fighters
     fighter_1.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_2)
+    fighter_2.move(SCREEN_WIDTH, SCREEN_HEIGHT, screen, fighter_1)
     
     #update fighters
     fighter_1.update()
