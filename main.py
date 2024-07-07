@@ -20,10 +20,10 @@ YELLOW = (255,255,0)
 WHITE= (255, 255, 255)
 
 #define fighter variables
-NUGGIE01_SIZE = 280
+NUGGIE01_SIZE = 275
 NUGGIE01_SCALE = 2
 NUGGIE01_DATA = [NUGGIE01_SIZE, NUGGIE01_SCALE]
-NUGGIE02_SIZE = 280
+NUGGIE02_SIZE = 275
 NUGGIE02_SCALE = 2
 NUGGIE02_DATA = [NUGGIE02_SIZE, NUGGIE02_SCALE]
 
@@ -50,8 +50,8 @@ def draw_health_bar(health, x, y):
     pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
 
 # create two instances of fighters
-fighter_1 = Fighter(200, 310,NUGGIE01_DATA, nuggie01_image, NUGGIE01_ANIMATION_STEPS)
-fighter_2 = Fighter(700, 350,NUGGIE02_DATA, nuggie02_image, NUGGIE02_ANIMATION_STEPS)
+fighter_1 = Fighter(200, 310, False, NUGGIE01_DATA, nuggie01_image, NUGGIE01_ANIMATION_STEPS)
+fighter_2 = Fighter(700, 350, True, NUGGIE02_DATA, nuggie02_image, NUGGIE02_ANIMATION_STEPS)
 
 
 #game loop

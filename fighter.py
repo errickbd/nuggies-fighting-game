@@ -1,7 +1,7 @@
 import pygame
 
 class Fighter():
-    def __init__(self, x, y, data, image, animation_steps):
+    def __init__(self, x, y, flip, data, image, animation_steps):
         self.size = data[0]
         self.image_scale = data[1]
         self.flip = False
@@ -110,6 +110,7 @@ class Fighter():
 
 
     def draw(self, surface):
+        img = pygame.transform.flip(self.image, self.flip, False)
         pygame.draw.rect(surface, (255, 0, 0), self.rect)
-        surface.blit(self.image, (self.rect.x, self.rect.y))
+        surface.blit(img, (self.rect.x, self.rect.y))
 
